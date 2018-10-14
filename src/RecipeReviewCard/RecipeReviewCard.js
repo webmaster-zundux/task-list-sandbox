@@ -16,23 +16,20 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Edit from "@material-ui/icons/Edit";
-import IMAGE_HOST from "../config";
+import { IMAGE_HOST } from "../config";
 
 const styles = theme => ({
   card: {
-    maxWidth: 400,
+    // maxWidth: 400,
     // width: "80%",
-    maxHeight: 200
+    // maxHeight: 200
   },
   media: {
-    height: 0,
-    paddingTop: "56.25%" // 16:9
+    // height: 0,
+    // paddingTop: "56.25%" // 16:9
   },
   actions: {
     display: "flex"
-  },
-  avatar: {
-    backgroundColor: red[500]
   }
 });
 
@@ -47,7 +44,7 @@ class RecipeReviewCard extends React.Component {
     const { classes, editable = true } = this.props;
     const { title, descrition, images = [], author } = this.props.task;
 
-    const subheader = `${author.username || "Jerry Mouse"}
+    const authorLabel = `${author.username || "Jerry Mouse"}
      (${author.email || "jerry.mouse@example.com"})`;
 
     const mainImage = images && images[0];
@@ -64,7 +61,7 @@ class RecipeReviewCard extends React.Component {
             )
           }
           title={title || "task name"}
-          subheader={subheader}
+          subheader={authorLabel}
         />
         <CardMedia className={classes.media} image={imageUrl} title={title} />
         <CardContent>

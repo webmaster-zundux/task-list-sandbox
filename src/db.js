@@ -5,18 +5,30 @@ export const tasks = [
     Each task should contain a description, images, author's username and email. 
     Everybody can see all tasks and create new task. 
     Only admin can edit task.`,
-    author: 1
+    author: {
+      id: 1,
+      username: "Jerry Mouse",
+      email: "jerry.mouse@example.com"
+    }
   },
   {
     id: 2,
     description: "Catch the mouse",
-    author: 2,
+    author: {
+      id: 2,
+      username: "Tom Cat",
+      email: "tom.cat@example.com"
+    },
     images: ["jerry_1.jpg", "jerry_2.png", "jerry_3.gif"]
   },
   {
     id: 3,
     description: `Don't let the mouse steal cheese`,
-    author: 2,
+    author: {
+      id: 2,
+      username: "Tom Cat",
+      email: "tom.cat@example.com"
+    },
     images: ["jerry_1.jpg", "cheese_1.jpg"]
   }
   // {
@@ -42,5 +54,6 @@ export const users = [
 
 export default {
   tasks,
-  users
+  users,
+  editable: true
 };
