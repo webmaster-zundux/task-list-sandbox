@@ -54,6 +54,5 @@ export const users = [
 
 export default {
   tasks,
-  users,
-  editable: true
+  users
 };
