@@ -9,6 +9,9 @@ import { tasks } from "./db";
 const editable = true;
 const sortByField = "id";
 const sortDirection = "asc";
+const onChangeSortParams = () => {
+  console.log(arguments);
+};
 
 function App() {
   return (
@@ -17,7 +20,8 @@ function App() {
       <ListHeader
         {...{
           sortByField,
-          sortDirection
+          sortDirection,
+          onChangeSortParams
         }}
       />
       <ImageGridList tasks={tasks} editable={editable} />

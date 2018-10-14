@@ -2,12 +2,22 @@ import React from "react";
 import * as R from "ramda";
 import PropTypes from "prop-types";
 import TableSortLabel from "@material-ui/core/TableSortLabel";
+import Typography from "@material-ui/core/Typography";
 
-const sortFields = {
-  id: "default",
-  username: "username",
-  email: "email"
-};
+const sortFields = [
+  {
+    key: "id",
+    text: "default"
+  },
+  {
+    key: "username",
+    text: "username"
+  },
+  {
+    key: "email",
+    text: "email"
+  }
+];
 
 const orders = {
   "": "asc",
@@ -20,17 +30,18 @@ function ListHeader(props) {
 
   return (
     <div>
-      {R.map((value, key) => {
-        const nextOrder = key === orderBy ? orders[order] : "asc";
+      <Typography component="span">Sort by: </Typography>
+      {R.map((field, index) => {
+        const nextOrder = field.key === orderBy ? orders[order] : "asc";
 
         return (
           <TableSortLabel
-            id={key}
-            active={orderBy === key}
+            id={index}
+            active={orderBy === field.key}
             direction={order}
-            onClick={() => onChangeSortParams(key, nextOrder)}
+            onClick={() => onChangeSortParams(field.key, nextOrder)}
           >
-            {value}
+            {field.text}
           </TableSortLabel>
         );
       })(sortFields)}
