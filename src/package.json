@@ -1,0 +1,14 @@
+{
+  "name": "material-ui-simple-demo",
+  "version": "1.0.0",
+  "description": "Live demo",
+  "keywords": [],
+  "homepage": "https://codesandbox.io/s/4j7m47vlm4",
+  "main": "index.js",
+  "dependencies": {
+    "@material-ui/core": "latest",
+    "@material-ui/icons": "3.0.1",
+    "react": "latest",
+    "react-dom": "latest"
+  }
+}
