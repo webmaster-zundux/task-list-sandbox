@@ -17,9 +17,7 @@ const styles = theme => ({
   },
   media: {
     height: 0,
-    paddingTop: "56.25%", // 16:9
-    // paddingTop: 100
-    width: "calc(100% + 1px)"
+    paddingTop: "56.25%" // 16:9
   },
   actions: {
     display: "flex"
