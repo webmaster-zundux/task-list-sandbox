@@ -8,6 +8,7 @@
   "dependencies": {
     "@material-ui/core": "latest",
     "@material-ui/icons": "3.0.1",
+    "ramda": "0.25.0",
     "react": "latest",
     "react-dom": "latest"
   },

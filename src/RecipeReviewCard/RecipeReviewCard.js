@@ -20,13 +20,13 @@ import { IMAGE_HOST } from "../config";
 
 const styles = theme => ({
   card: {
-    // maxWidth: 400,
-    // width: "80%",
     // maxHeight: 200
   },
   media: {
-    // height: 0,
-    // paddingTop: "56.25%" // 16:9
+    height: 0,
+    paddingTop: "56.25%", // 16:9
+    // paddingTop: 100
+    width: "calc(100% + 1px)"
   },
   actions: {
     display: "flex"
@@ -41,14 +41,15 @@ class RecipeReviewCard extends React.Component {
   };
 
   render() {
-    const { classes, editable = true } = this.props;
-    const { title, descrition, images = [], author } = this.props.task;
+    const { task = {}, classes, editable = true } = this.props;
+    const { title, description, images = [], author = {} } = task;
+    const { username, email } = author;
 
-    const authorLabel = `${author.username || "Jerry Mouse"}
-     (${author.email || "jerry.mouse@example.com"})`;
+    const authorLabel = `${username || "Jerry Mouse"}
+     (${email || "jerry.mouse@example.com"})`;
 
     const mainImage = images && images[0];
-    const imageUrl = `${IMAGE_HOST}/${mainImage}`;
+    const imageUrl = `${IMAGE_HOST}${mainImage}`;
 
     return (
       <Card className={classes.card}>
@@ -63,9 +64,11 @@ class RecipeReviewCard extends React.Component {
           title={title || "task name"}
           subheader={authorLabel}
         />
-        <CardMedia className={classes.media} image={imageUrl} title={title} />
+        {mainImage && (
+          <CardMedia className={classes.media} image={imageUrl} title={title} />
+        )}
         <CardContent>
-          <Typography component="p">{descrition}</Typography>
+          <Typography component="p">{description}</Typography>
         </CardContent>
       </Card>
     );
