@@ -6,6 +6,8 @@ import TaskList from "./TaskList";
 import ListHeader from "./ListHeader";
 import ListPagination from "./ListPagination";
 import AppBar from "./AppBar";
+import Dialog from "./Dialog";
+import TaskForm from "./TaskForm";
 
 import { tasks } from "./db";
 const tasksTotal = 4;
@@ -17,18 +19,37 @@ const onChangeSortParams = () => {
 };
 const onChangePage = (event, page) => {
   console.log("onChangePage", arguments);
-  // this.setState({ page });
 };
 const page = 0,
   rowsPerPage = 3,
   count = tasksTotal;
+
+let isOpenCreateTaskDialog = true;
+const onAddTask = () => {
+  onOpenDialog();
+};
+const onOpenDialog = () => {
+  isOpenCreateTaskDialog = true;
+};
+const onCloseDialog = () => {
+  isOpenCreateTaskDialog = false;
+};
+const onOk = () => {
+  // call form submit
+};
+const isNew = true;
+const editTaskDialogTitle = isNew ? "Create task" : "Edit task";
 
 function App() {
   return (
     <div>
       <CssBaseline />
       <Page>
-        <AppBar />
+        <AppBar
+          {...{
+            onAddTask
+          }}
+        />
         <ListHeader
           {...{
             sortByField,
@@ -45,6 +66,16 @@ function App() {
             onChangePage
           }}
         />
+        <Dialog
+          {...{
+            isOpenCreateTaskDialog,
+            onCloseDialog,
+            onOk,
+            title: editTaskDialogTitle
+          }}
+        >
+          <TaskForm />
+        </Dialog>
       </Page>
     </div>
   );

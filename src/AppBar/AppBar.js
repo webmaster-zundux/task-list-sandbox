@@ -20,7 +20,7 @@ const styles = theme => ({
 });
 
 function ButtonAppBar(props) {
-  const { classes } = props;
+  const { classes, onAddTask } = props;
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -28,7 +28,12 @@ function ButtonAppBar(props) {
           <Typography variant="h6" color="inherit" className={classes.grow}>
             Task tracker
           </Typography>
-          <Button color="inherit" size="small" aria-label="Add task">
+          <Button
+            color="inherit"
+            size="small"
+            aria-label="Add task"
+            onClick={onAddTask}
+          >
             <AddIcon className={classes.extendedIcon} />
             Add task
           </Button>
@@ -39,7 +44,8 @@ function ButtonAppBar(props) {
 }
 
 ButtonAppBar.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  onAddTask: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(ButtonAppBar);

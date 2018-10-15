@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -7,48 +8,30 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-export default class FormDialog extends React.Component {
-  state = {
-    open: false
-  };
-
-  handleClickOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
+class FormDialog extends React.Component {
   render() {
+    const {
+      isOpenCreateTaskDialog = false,
+      onOk,
+      onClose,
+      children
+    } = this.props;
+
     return (
       <div>
-        <Button onClick={this.handleClickOpen}>Create task</Button>
         <Dialog
-          open={this.state.open}
-          onClose={this.handleClose}
+          open={isOpenCreateTaskDialog}
+          onClose={onClose}
           aria-labelledby="create-task-form-dialog"
         >
-          <DialogTitle id="create-task-form-dialog">Create task</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              Allowed extensions for images: jpg, png, gif.
-            </DialogContentText>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Email Address"
-              type="email"
-              fullWidth
-            />
-          </DialogContent>
+          <DialogTitle id="create-task-form-dialog">Title</DialogTitle>
+          <DialogContent>{children}</DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={onClose} color="secondary">
               Cancel
             </Button>
-            <Button onClick={this.handleClose} color="primary">
-              Create
+            <Button onClick={onOk} color="primary">
+              Save
             </Button>
           </DialogActions>
         </Dialog>
@@ -56,3 +39,12 @@ export default class FormDialog extends React.Component {
     );
   }
 }
+
+FormDialog.propTypes = {
+  classes: PropTypes.object.isRequired,
+  onOk: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  children: PropTypes.any
+};
+
+export default FormDialog;
