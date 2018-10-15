@@ -5,17 +5,19 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import AddIcon from "@material-ui/icons/Add";
 
-const styles = {
+const styles = theme => ({
   root: {
     flexGrow: 1
   },
   grow: {
     flexGrow: 1
+  },
+  extendedIcon: {
+    marginRight: theme.spacing.unit
   }
-};
+});
 
 function ButtonAppBar(props) {
   const { classes } = props;
@@ -26,7 +28,10 @@ function ButtonAppBar(props) {
           <Typography variant="h6" color="inherit" className={classes.grow}>
             Task tracker
           </Typography>
-          <Button color="inherit">Add task</Button>
+          <Button color="inherit" size="small" aria-label="Add task">
+            <AddIcon className={classes.extendedIcon} />
+            Add task
+          </Button>
         </Toolbar>
       </AppBar>
     </div>

@@ -12,11 +12,7 @@ export const styles = theme => ({
     fontSize: theme.typography.pxToRem(12)
   },
   /* Styles applied to the Toolbar component. */
-  toolbar: {
-    height: 56,
-    minHeight: 56,
-    paddingRight: 2
-  },
+  toolbar: {},
   /* Styles applied to the spacer element. */
   spacer: {
     flex: "1 1 100%"

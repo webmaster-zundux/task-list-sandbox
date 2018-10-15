@@ -7,15 +7,13 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import TablePaginationActions from "@material-ui/core/TablePaginationActions";
 import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
 
 const styles = theme => ({
   root: {
     color: theme.palette.text.secondary,
-    fontSize: theme.typography.pxToRem(12)
-  },
-  toolbar: {},
-  caption: {
-    flexShrink: 0
+    fontSize: theme.typography.pxToRem(12),
+    width: "100%"
   },
   button: {
     margin: theme.spacing.unit,
@@ -50,31 +48,40 @@ function ListHeader(props) {
   return (
     <div className={classes.root}>
       <Toolbar className={classes.toolbar}>
-        <Typography color="inherit" className={classes.caption}>
-          Sort by:{" "}
-        </Typography>
-        {R.map((field, index) => {
-          const nextOrder = field.key === orderBy ? orders[order] : "asc";
-          const color = field.key === orderBy ? "primary" : "";
-          const hasDirectionIcon = orderBy === field.key;
+        <Grid
+          container
+          direction="row"
+          justify="flex-start"
+          alignItems="center"
+        >
+          <Grid item>
+            <Typography color="inherit">Sort by: </Typography>
+          </Grid>
+          {R.map((field, index) => {
+            const nextOrder = field.key === orderBy ? orders[order] : "asc";
+            const color = field.key === orderBy ? "primary" : "";
+            const hasDirectionIcon = orderBy === field.key;
 
-          return (
-            <Button className={classes.button} color={color} size="small">
-              {hasDirectionIcon && (
-                <React.Fragment>
-                  {field.text}
-                  <SortLabel
-                    id={index}
-                    active={orderBy === field.key}
-                    direction={order}
-                    onClick={() => onChangeSortParams(field.key, nextOrder)}
-                  />
-                </React.Fragment>
-              )}
-              {!hasDirectionIcon && field.text}
-            </Button>
-          );
-        })(sortFields)}
+            return (
+              <Grid key={index} item>
+                <Button className={classes.button} color={color} size="small">
+                  {hasDirectionIcon && (
+                    <React.Fragment>
+                      {field.text}
+                      <SortLabel
+                        id={index}
+                        active={orderBy === field.key}
+                        direction={order}
+                        onClick={() => onChangeSortParams(field.key, nextOrder)}
+                      />
+                    </React.Fragment>
+                  )}
+                  {!hasDirectionIcon && field.text}
+                </Button>
+              </Grid>
+            );
+          })(sortFields)}
+        </Grid>
       </Toolbar>
     </div>
   );

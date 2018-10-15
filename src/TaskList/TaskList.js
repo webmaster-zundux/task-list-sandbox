@@ -14,13 +14,13 @@ function TaskList(props) {
   const { classes, tasks = [], editable = true } = props;
 
   return (
-    <React.Fragment>
+    <Grid container className={classes.root} spacing={16}>
       {tasks.map((task, id) => (
         <Grid key={id} item className={classes.item}>
           <TaskCard task={task} editable={editable} />
         </Grid>
       ))}
-    </React.Fragment>
+    </Grid>
   );
 }
 

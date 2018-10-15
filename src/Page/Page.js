@@ -19,9 +19,9 @@ function Page(props) {
   const { classes, children } = props;
 
   return (
-    <Grid container className={classes.root} spacing={16}>
+    <Grid container className={classes.root}>
       <Grid item xs={8}>
-        <Grid container className={classes.list} spacing={16}>
+        <Grid container className={classes.list}>
           {children}
         </Grid>
       </Grid>
