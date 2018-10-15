@@ -8,9 +8,12 @@
   "dependencies": {
     "@material-ui/core": "latest",
     "@material-ui/icons": "3.0.1",
+    "class-names": "1.0.0",
     "ramda": "0.25.0",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "redux": "4.0.1",
+    "redux-thunk": "2.3.0"
   },
   "devDependencies": {
     "react-scripts": "1.0.0"

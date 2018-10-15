@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import TextField from "@material-ui/core/TextField";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
-import SaveIcon from "@material-ui/icons/SaveIcon";
+import SaveIcon from "@material-ui/icons/Save";
 
 const styles = theme => ({
   button: {
@@ -42,15 +42,12 @@ class TaskForm extends React.Component {
     return (
       <form onSubmit={onSubmit}>
         <TextField
+          hintText="Task description"
           autoFocus
-          margin="dense"
-          id="title"
-          label="Title"
-          type="text"
+          multiline={true}
+          rows={1}
           fullWidth
         />
-
-        <TextField hintText="Task description" multiline={true} rows={4} />
 
         <input
           accept="image/*"

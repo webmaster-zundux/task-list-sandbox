@@ -39,6 +39,9 @@ const onOk = () => {
 };
 const isNew = true;
 const editTaskDialogTitle = isNew ? "Create task" : "Edit task";
+const onSubmit = () => {
+  //send the form data as multipart POST request
+};
 
 function App() {
   return (
@@ -74,7 +77,11 @@ function App() {
             title: editTaskDialogTitle
           }}
         >
-          <TaskForm />
+          <TaskForm
+            {...{
+              onSubmit
+            }}
+          />
         </Dialog>
       </Page>
     </div>
