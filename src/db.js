@@ -13,7 +13,8 @@ export const tasks = [
   },
   {
     id: 2,
-    description: "Catch the mouse",
+    description:
+      "Catch the mouse. Catch the mouse. Catch the mouse. Catch the mouse. Catch the mouse. Catch the mouse. Catch the mouse. Catch the mouse. Catch the mouse. Catch the mouse. Catch the mouse. ",
     author: {
       id: 2,
       username: "Tom Cat",
