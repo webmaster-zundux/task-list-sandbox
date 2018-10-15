@@ -12,12 +12,17 @@ import { capitalize } from "../helpers";
 
 const styles = theme => ({
   card: {},
+  mediaContainer: {
+    width: "100%",
+    backgroundColor: "gray"
+  },
   media: {
     height: 0,
-    paddingTop: "56.25%", // 16:9
-    maxHeight: 240,
-    maxWidth: 320,
-    backgroundAlign: "center"
+    // paddingTop: "56.25%" // 16:9
+    paddingTop: 240,
+    backgroundSize: "contain"
+    // maxHeight: 240,
+    // maxWidth: 320,
   },
   content: {},
   actions: {
@@ -45,7 +50,13 @@ class TaskCard extends React.Component {
     return (
       <Card className={classes.card}>
         {mainImage && (
-          <CardMedia className={classes.media} image={imageUrl} title={title} />
+          <div className={classes.mediaContainer}>
+            <CardMedia
+              className={classes.media}
+              image={imageUrl}
+              title={title}
+            />
+          </div>
         )}
         <CardContent className={classes.content}>
           <Typography variant="body1" gutterBottom>
