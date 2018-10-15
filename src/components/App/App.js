@@ -8,7 +8,7 @@ import AppBar from "../AppBar";
 import Dialog from "../Dialog";
 import TaskForm from "../TaskForm";
 
-import { tasks } from "../db";
+import { tasks } from "../../db";
 
 const tasksTotal = 4;
 const editable = true;

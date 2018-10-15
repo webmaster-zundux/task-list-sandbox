@@ -7,8 +7,8 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import CardActions from "@material-ui/core/CardActions";
-import { IMAGE_HOST } from "../config";
-import { capitalize } from "../helpers";
+import { IMAGE_HOST } from "../../config";
+import { capitalize } from "../../helpers";
 
 const styles = theme => ({
   card: {},

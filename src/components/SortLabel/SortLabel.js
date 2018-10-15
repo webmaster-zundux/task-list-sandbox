@@ -6,7 +6,7 @@ import classNames from "classnames";
 import ArrowDownwardIcon from "@material-ui/core/internal/svg-icons/ArrowDownward";
 import { withStyles } from "@material-ui/core/styles";
 import ButtonBase from "@material-ui/core/ButtonBase";
-import { capitalize } from "../helpers";
+import { capitalize } from "../../helpers";
 
 export const styles = theme => ({
   /* Styles applied to the root element. */
