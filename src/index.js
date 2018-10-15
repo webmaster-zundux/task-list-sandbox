@@ -5,6 +5,7 @@ import Page from "./Page";
 import TaskList from "./TaskList";
 import ListHeader from "./ListHeader";
 import ListPagination from "./ListPagination";
+import AppBar from "./AppBar";
 
 import { tasks } from "./db";
 const tasksTotal = 4;
@@ -27,6 +28,7 @@ function App() {
     <div>
       <CssBaseline />
       <Page>
+        <AppBar />
         <ListHeader
           {...{
             sortByField,

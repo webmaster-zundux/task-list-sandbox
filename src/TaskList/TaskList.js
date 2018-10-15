@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import RecipeReviewCard from "../RecipeReviewCard";
+import TaskCard from "../TaskCard";
 
 const styles = theme => ({
   item: {
@@ -17,7 +17,7 @@ function TaskList(props) {
     <React.Fragment>
       {tasks.map((task, id) => (
         <Grid key={id} item className={classes.item}>
-          <RecipeReviewCard task={task} editable={editable} />
+          <TaskCard task={task} editable={editable} />
         </Grid>
       ))}
     </React.Fragment>
