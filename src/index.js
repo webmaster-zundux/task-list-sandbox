@@ -1,91 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Page from "./Page";
-import TaskList from "./TaskList";
-import ListHeader from "./ListHeader";
-import ListPagination from "./ListPagination";
-import AppBar from "./AppBar";
-import Dialog from "./Dialog";
-import TaskForm from "./TaskForm";
+import { Provider } from "react-redux";
+import App from "./App";
+import store from "./redux/store";
 
-import { tasks } from "./db";
-const tasksTotal = 4;
-const editable = true;
-const sortByField = "id";
-const sortDirection = "asc";
-const onChangeSortParams = () => {
-  console.log("onChangeSortParams", arguments);
-};
-const onChangePage = (event, page) => {
-  console.log("onChangePage", arguments);
-};
-const page = 0,
-  rowsPerPage = 3,
-  count = tasksTotal;
-
-let isOpenCreateTaskDialog = true;
-const onAddTask = () => {
-  onOpenDialog();
-};
-const onOpenDialog = () => {
-  isOpenCreateTaskDialog = true;
-};
-const onCloseDialog = () => {
-  isOpenCreateTaskDialog = false;
-};
-const onOk = () => {
-  // call form submit
-};
-const isNew = true;
-const editTaskDialogTitle = isNew ? "Create task" : "Edit task";
-const onSubmit = () => {
-  //send the form data as multipart POST request
-};
-
-function App() {
-  return (
-    <div>
-      <CssBaseline />
-      <Page>
-        <AppBar
-          {...{
-            onAddTask
-          }}
-        />
-        <ListHeader
-          {...{
-            sortByField,
-            sortDirection,
-            onChangeSortParams
-          }}
-        />
-        <TaskList tasks={tasks} editable={editable} />
-        <ListPagination
-          {...{
-            page,
-            rowsPerPage,
-            count,
-            onChangePage
-          }}
-        />
-        <Dialog
-          {...{
-            isOpenCreateTaskDialog,
-            onCloseDialog,
-            onOk,
-            title: editTaskDialogTitle
-          }}
-        >
-          <TaskForm
-            {...{
-              onSubmit
-            }}
-          />
-        </Dialog>
-      </Page>
-    </div>
-  );
-}
-
-ReactDOM.render(<App />, document.querySelector("#app"));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.querySelector("#app")
+);

@@ -42,7 +42,7 @@ const orders = {
   desc: ""
 };
 
-function ListHeader(props) {
+const ListHeader = props => {
   const { classes, orderBy = "id", order = "", onChangeSortParams } = props;
 
   return (
@@ -85,7 +85,7 @@ function ListHeader(props) {
       </Toolbar>
     </div>
   );
-}
+};
 
 ListHeader.propTypes = {
   classes: PropTypes.object.Required,
