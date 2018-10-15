@@ -1,12 +1,6 @@
-// @inheritedComponent TableCell
-
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import InputBase from "@material-ui/core/InputBase";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-import TableCell from "@material-ui/core/TableCell";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import TablePaginationActions from "@material-ui/core/TablePaginationActions";
@@ -15,11 +9,7 @@ export const styles = theme => ({
   /* Styles applied to the root element. */
   root: {
     color: theme.palette.text.secondary,
-    fontSize: theme.typography.pxToRem(12),
-    // Increase the specificity to override TableCell.
-    "&:last-child": {
-      padding: 0
-    }
+    fontSize: theme.typography.pxToRem(12)
   },
   /* Styles applied to the Toolbar component. */
   toolbar: {
@@ -65,10 +55,7 @@ export const styles = theme => ({
   }
 });
 
-/**
- * A `TableCell` based component for placing inside `TableFooter` for pagination.
- */
-class TablePagination extends React.Component {
+class ListPagination extends React.Component {
   // This logic would be better handled on userside.
   // However, we have it just in case.
   componentDidUpdate() {
@@ -84,63 +71,17 @@ class TablePagination extends React.Component {
       ActionsComponent,
       backIconButtonProps,
       classes,
-      colSpan: colSpanProp,
-      component: Component,
       count,
       labelDisplayedRows,
-      labelRowsPerPage,
       nextIconButtonProps,
       onChangePage,
-      onChangeRowsPerPage,
       page,
-      rowsPerPage,
-      rowsPerPageOptions,
-      SelectProps,
-      ...other
+      rowsPerPage
     } = this.props;
 
-    let colSpan;
-
-    if (Component === TableCell || Component === "td") {
-      colSpan = colSpanProp || 1000; // col-span over everything
-    }
-
     return (
-      <Component className={classes.root} colSpan={colSpan} {...other}>
+      <div className={classes.root}>
         <Toolbar className={classes.toolbar}>
-          <div className={classes.spacer} />
-          {rowsPerPageOptions.length > 1 && (
-            <Typography
-              color="inherit"
-              variant="caption"
-              className={classes.caption}
-            >
-              {labelRowsPerPage}
-            </Typography>
-          )}
-          {rowsPerPageOptions.length > 1 && (
-            <Select
-              classes={{
-                root: classes.selectRoot,
-                select: classes.select,
-                icon: classes.selectIcon
-              }}
-              input={<InputBase className={classes.input} />}
-              value={rowsPerPage}
-              onChange={onChangeRowsPerPage}
-              {...SelectProps}
-            >
-              {rowsPerPageOptions.map(rowsPerPageOption => (
-                <MenuItem
-                  className={classes.menuItem}
-                  key={rowsPerPageOption}
-                  value={rowsPerPageOption}
-                >
-                  {rowsPerPageOption}
-                </MenuItem>
-              ))}
-            </Select>
-          )}
           <Typography
             color="inherit"
             variant="caption"
@@ -163,12 +104,12 @@ class TablePagination extends React.Component {
             rowsPerPage={rowsPerPage}
           />
         </Toolbar>
-      </Component>
+      </div>
     );
   }
 }
 
-TablePagination.propTypes = {
+ListPagination.propTypes = {
   /**
    * The component used for displaying the actions.
    * Either a string to use a DOM element or a component.
@@ -188,19 +129,6 @@ TablePagination.propTypes = {
    */
   classes: PropTypes.object.isRequired,
   /**
-   * @ignore
-   */
-  colSpan: PropTypes.number,
-  /**
-   * The component used for the root node.
-   * Either a string to use a DOM element or a component.
-   */
-  component: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-    PropTypes.object
-  ]),
-  /**
    * The total number of rows.
    */
   count: PropTypes.number.isRequired,
@@ -208,11 +136,6 @@ TablePagination.propTypes = {
    * Customize the displayed rows label.
    */
   labelDisplayedRows: PropTypes.func,
-  /**
-   * Customize the rows per page label. Invoked with a `{ from, to, count, page }`
-   * object.
-   */
-  labelRowsPerPage: PropTypes.node,
   /**
    * Properties applied to the next arrow [`IconButton`](/api/icon-button/) element.
    */
@@ -225,38 +148,22 @@ TablePagination.propTypes = {
    */
   onChangePage: PropTypes.func.isRequired,
   /**
-   * Callback fired when the number of rows per page is changed.
-   *
-   * @param {object} event The event source of the callback
-   */
-  onChangeRowsPerPage: PropTypes.func,
-  /**
    * The zero-based index of the current page.
    */
   page: PropTypes.number.isRequired,
   /**
    * The number of rows per page.
    */
-  rowsPerPage: PropTypes.number.isRequired,
-  /**
-   * Customizes the options of the rows per page select field. If less than two options are
-   * available, no select field will be displayed.
-   */
-  rowsPerPageOptions: PropTypes.array,
-  /**
-   * Properties applied to the rows per page [`Select`](/api/select/) element.
-   */
-  SelectProps: PropTypes.object
+  rowsPerPage: PropTypes.number.isRequired
 };
 
-TablePagination.defaultProps = {
+ListPagination.defaultProps = {
   ActionsComponent: TablePaginationActions,
-  component: TableCell,
   labelDisplayedRows: ({ from, to, count }) => `${from}-${to} of ${count}`,
   labelRowsPerPage: "Rows per page:",
   rowsPerPageOptions: [5, 10, 25]
 };
 
 export default withStyles(styles, { name: "MuiTablePagination" })(
-  TablePagination
+  ListPagination
 );

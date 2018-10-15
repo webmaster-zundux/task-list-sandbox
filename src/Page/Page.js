@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import RecipeReviewCard from "../RecipeReviewCard";
 
 const styles = theme => ({
   root: {
@@ -13,33 +12,26 @@ const styles = theme => ({
   list: {
     display: "flex",
     justifyContent: "center"
-  },
-  item: {
-    width: "100%"
   }
 });
 
-function ImageGridList(props) {
-  const { classes, tasks = [], editable = true } = props;
+function Page(props) {
+  const { classes, children } = props;
 
   return (
     <Grid container className={classes.root} spacing={16}>
       <Grid item xs={8}>
         <Grid container className={classes.list} spacing={16}>
-          {tasks.map((task, id) => (
-            <Grid key={id} item className={classes.item}>
-              <RecipeReviewCard task={task} editable={editable} />
-            </Grid>
-          ))}
+          {children}
         </Grid>
       </Grid>
     </Grid>
   );
 }
 
-ImageGridList.propTypes = {
-  classes: PropTypes.object.isRequired,
-  tasks: PropTypes.array
+Page.propTypes = {
+  classes: PropTypes.object.Required,
+  children: PropTypes.any
 };
 
-export default withStyles(styles)(ImageGridList);
+export default withStyles(styles)(Page);

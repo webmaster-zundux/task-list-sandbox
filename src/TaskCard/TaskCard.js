@@ -24,7 +24,7 @@ const styles = theme => ({
   }
 });
 
-class RecipeReviewCard extends React.Component {
+class TaskCard extends React.Component {
   state = { expanded: false };
 
   handleExpandClick = () => {
@@ -38,7 +38,7 @@ class RecipeReviewCard extends React.Component {
 
     const titleLabel = capitalize(title || "task name");
     const authorLabel = `${username || "Jerry Mouse"}
-     (${email || "jerry.mouse@example.com"})`;
+            (${email || "jerry.mouse@example.com"})`;
 
     const mainImage = images && images[0];
     const imageUrl = `${IMAGE_HOST}${mainImage}`;
@@ -67,10 +67,10 @@ class RecipeReviewCard extends React.Component {
   }
 }
 
-RecipeReviewCard.propTypes = {
+TaskCard.propTypes = {
   classes: PropTypes.object.Required,
   task: PropTypes.object.Required,
   editable: PropTypes.bool
 };
 
-export default withStyles(styles)(RecipeReviewCard);
+export default withStyles(styles)(TaskCard);
